@@ -11,6 +11,18 @@
   },
   "plugins": [
     {
+      "name": "rpi",
+      "description": "Research a change, work through its design, and implement it with reviewable local documents",
+      "version": "1.1.0",
+      "author": {
+        "name": "humanlayer",
+        "email": "support@humanlayer.dev"
+      },
+      "source": "./plugins/rpi",
+      "category": "productivity",
+      "keywords": ["research", "design", "implementation", "skills"]
+    },
+    {
       "name": "improve-claude-md",
       "description": "Rewrite a CLAUDE.md file using <important if> blocks to improve instruction adherence",
       "version": "1.0.0",
@@ -57,6 +69,18 @@
       "source": "./plugins/show-me",
       "category": "productivity",
       "keywords": ["visualization", "diagrams", "mermaid", "code", "html"]
+    },
+    {
+      "name": "visual-pr",
+      "description": "Create or update a pull request with a concise visual outline for reviewers",
+      "version": "1.0.0",
+      "author": {
+        "name": "humanlayer",
+        "email": "support@humanlayer.dev"
+      },
+      "source": "./plugins/visual-pr",
+      "category": "productivity",
+      "keywords": ["pull-request", "code-review", "visualization", "github", "claude-code"]
     }
   ]
 }
