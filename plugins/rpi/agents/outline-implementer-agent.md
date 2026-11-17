@@ -1,7 +1,7 @@
 ---
 name: outline-implementer-agent
 description: "Implements structure outlines from the selected task directory, or directly from available workflow documents. Follows phased implementation with progress tracking in the outline document itself."
-tools: read, edit, write, grep, find, bash, codemode
+tools: read, edit, write, grep, find, bash, codemode, obs_recall, update_plan
 ---
 
 # Implement Structure Outline
@@ -61,8 +61,7 @@ After implementing a phase:
 1. Run all automated verification commands listed in the Validation section
 2. Fix any issues before marking checkboxes complete
 3. Update checkboxes in the outline using Edit
-4. Update your TodoWrite progress when that tool is available
-5. **Pause for pending human verification**: After automated checks pass, if manual checks remain, inform the parent agent or human:
+4. **Pause for pending human verification**: After automated checks pass, if manual checks remain, inform the parent agent or human:
    ```
    Phase [N] Complete - Ready for Manual Verification
 
