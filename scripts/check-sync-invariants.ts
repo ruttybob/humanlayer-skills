@@ -31,7 +31,6 @@ for (const plugin of readdirSync(resolve(root, "plugins"))) {
 
 // 3. Local overrides survive every sync.
 const overrides = [
-  "build-iterated-agentic-loop",
   "design-control-loop",
   "rpi",
   "visual-pr",
