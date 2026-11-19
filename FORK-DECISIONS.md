@@ -6,7 +6,7 @@ One entry per local change to an upstream-owned path (`plugins/**`). Add the ent
 
 ### `disable-model-invocation: true` on user-invoked skills
 
-- **Paths**: `plugins/build-iterated-agentic-loop`, `plugins/design-control-loop`, `plugins/rpi`, `plugins/visual-pr` — each at `skills/<name>/SKILL.md`.
+- **Paths**: `plugins/design-control-loop`, `plugins/rpi`, `plugins/visual-pr` — each at `skills/<name>/SKILL.md`.
 - **Delta**: one frontmatter line per file.
 - **Why**: the flag removes the skill from the model entirely; a description-only hint would still ride in context on every turn.
 - **Sync policy**: the flag must survive every merge. When a conflict touches those frontmatter blocks, take upstream content and re-add the flag. `scripts/check-sync-invariants.ts` fails without it.
@@ -22,9 +22,9 @@ One entry per local change to an upstream-owned path (`plugins/**`). Add the ent
 
 ### Bumped action majors in the loop template
 
-- **Paths**: `plugins/build-iterated-agentic-loop/skills/build-iterated-agentic-loop/references/workflow-template.yml`
+- **Paths**: `plugins/design-control-loop/skills/design-control-loop/references/workflow-template.yml` (moved there when cbd2577 folded build-iterated-agentic-loop into design-control-loop; the fold silently regressed the bump to `@v4` — re-applied)
 - **Delta**: `actions/setup-node@v4` and `actions/upload-artifact@v4` bumped to `@v5` (node20 deprecation).
 - **Why**: the template is the source for newly generated loops; every generated workflow inherited the deprecated actions.
 - **Sync policy**: keep the bumps; adopt any higher major upstream ships.
 
-Fork-only paths (`.github/**`, `.agents/**`, `scripts/check-sync-invariants.ts`) have no upstream counterpart and are not decisions — upstream cannot conflict with them.
+Fork-only paths (`.github/**`, `.agents/**`, `pi/**`, `scripts/check-sync-invariants.ts`) have no upstream counterpart and are not decisions — upstream cannot conflict with them. One caveat: `pi/skills/<name>/` dirs are delta-copies of `plugins/<name>/skills/<name>/` — `show-me` (every HTML artifact must ship a dark/light theme toggle, per its `references/theme-toggle.html`) and `design-control-loop` (pi runner template in `agent-runner-templates.md`, `$SKILLBASE` line, `.agents/skills/` preferred for actuator skills). When upstream touches those skills, re-derive the copy and re-apply the delta instead of merging.

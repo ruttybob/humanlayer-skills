@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Theme state lives in this meta: "light dark" = follow system, "light"/"dark" = override. -->
+  <meta name="color-scheme" content="light dark">
+
+  <!-- FOUC guard: apply the stored override before first paint. Keep inline, right after the meta. -->
+  <script>
+    try {
+      document.querySelector('meta[name="color-scheme"]').content =
+        localStorage.getItem('color-scheme') ?? 'light dark';
+    } catch {}
+  </script>
+
+  <style>
+    /* A bare meta is a no-op — CSS wins. Map the meta onto the color-scheme property. */
+    :root {
+      color-scheme: light dark;
+
+      &:has(> head > meta[name="color-scheme"][content="dark"]) { color-scheme: dark; }
+      &:has(> head > meta[name="color-scheme"][content="light"]) { color-scheme: light; }
+    }
+
+    /* Palette: light-dark(light, dark) pairs follow color-scheme for free.
+       Replace these tokens with the product's palette — add pairs, not themes.
+       Default is papery: a desk (--bg) with a lighter sheet (--paper), warm ink. */
+    :root {
+      --bg:     light-dark(#efe8d8, #1c1812);
+      --paper:  light-dark(#fbf7ec, #262019);
+      --fg:     light-dark(#29241c, #e8dfc9);
+      --muted:  light-dark(#7c7361, #a3987e);
+      --line:   light-dark(#d9cdb4, #3c342a);
+      --accent: light-dark(#8c3f2a, #d99a6c);
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--fg);
+      font: 17px/1.65 Georgia, 'Times New Roman', serif;
+      display: grid;          /* example layout — replace */
+      place-items: center;
+    }
+    .card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 2rem 2.5rem;
+      max-width: 34rem;
+      box-shadow: 0 1px 3px rgb(0 0 0 / .07), 0 10px 30px rgb(0 0 0 / .05);
+    }
+    .card h1 { margin: 0 0 .5rem; font-size: 1.25rem; }
+    .card p  { margin: 0; color: var(--muted); }
+    .card code { color: var(--accent); }
+
+    /* The toggle: fixed, so it works on diagrams and decks alike. */
+    #theme-toggle {
+      position: fixed;
+      top: .9rem;
+      right: .9rem;
+      z-index: 9;
+      display: grid;
+      place-items: center;
+      width: 2.4rem;
+      height: 2.4rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--bg);
+      color: var(--fg);
+      cursor: pointer;
+    }
+    /* Both actions live in the markup; CSS shows only the one pointing away from the
+       current scheme. Labels stay correct with zero JS, even when the system flips. */
+    #theme-toggle span { display: none; }
+    :root:has(> head > meta[name="color-scheme"][content="dark"])  .to-light { display: block; }
+    :root:has(> head > meta[name="color-scheme"][content="light"]) .to-dark  { display: block; }
+    @media (prefers-color-scheme: dark) {
+      :root:has(> head > meta[name="color-scheme"][content="light dark"]) .to-light { display: block; }
+    }
+    @media (prefers-color-scheme: light) {
+      :root:has(> head > meta[name="color-scheme"][content="light dark"]) .to-dark { display: block; }
+    }
+  </style>
+</head>
+<body>
+  <button id="theme-toggle" aria-label="Toggle color theme">
+    <span class="to-dark" aria-hidden="true">&#9728;</span>
+    <span class="to-light" aria-hidden="true">&#9789;</span>
+  </button>
+
+  <main class="card">
+    <h1>Theme toggle reference</h1>
+    <p>Replace this card with the actual diagram, infographic, or deck.
+       Keep the meta, the inline script, the <code>:root</code> rules, and the button wiring;
+       adapt the <code>--tokens</code> to the product palette.</p>
+  </main>
+
+  <script>
+    // Two-state toggle: system <-> opposite of what is rendered.
+    // Store an override only while it differs from the system preference.
+    const meta = document.querySelector('meta[name="color-scheme"]');
+    const system = () => matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    const rendered = () => {
+      const c = meta.content;
+      return c === 'light dark' ? system() : c;
+    };
+
+    document.getElementById('theme-toggle').addEventListener('click', () => {
+      const target = rendered() === 'dark' ? 'light' : 'dark';
+      if (target === system()) {
+        localStorage.removeItem('color-scheme');
+        meta.content = 'light dark';
+      } else {
+        localStorage.setItem('color-scheme', target);
+        meta.content = target;
+      }
+    });
+  </script>
+</body>
+</html>
