@@ -23,7 +23,7 @@ Identify the components, directories, patterns, and dependencies each investigat
 - `codebase-locator` finds relevant code, configuration, and tests.
 - `codebase-analyzer` traces behavior, data flow, and component interactions.
 - `codebase-pattern-finder` finds existing examples and conventions.
-- `web-search-researcher` checks external sources and returns links with its findings.
+- `researcher` checks external sources and returns links with its findings.
 
 Use an Explore agent when useful. Start with locating code where needed, then analyze the relevant implementations. Run independent investigations in parallel. Give each agent a bounded, read-only question and ask for concrete paths, line references, testing patterns, and supporting evidence.
 

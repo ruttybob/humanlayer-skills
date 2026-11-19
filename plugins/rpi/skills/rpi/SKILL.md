@@ -1,6 +1,7 @@
 ---
 name: rpi
 description: Only use when the user explicitly invokes this skill by name.
+disable-model-invocation: true
 ---
 
 # Research, Design, and Implement
@@ -64,7 +65,7 @@ Use artifact filenames to locate the current phase when asked what's next, then 
 
 ## Use Subagents
 
-Use the bundled agent instructions for `codebase-locator`, `codebase-analyzer`, `codebase-pattern-finder`, `web-search-researcher`, and `outline-implementer-agent` as directed by each phase.
+Use the bundled agent instructions for `codebase-locator`, `codebase-analyzer`, `codebase-pattern-finder`, `researcher`, and `outline-implementer-agent` as directed by each phase.
 
 <important if="you do not have an Agent() or Task() or other tool for running subagents">
   read the subagent instructions from $SKILLBASE/references/subagents/SUBAGENT_NAME.md

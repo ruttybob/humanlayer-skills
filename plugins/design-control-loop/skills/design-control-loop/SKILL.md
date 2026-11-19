@@ -1,6 +1,7 @@
 ---
 name: design-control-loop
 description: interview the user to design an agentic control loop — sensor, controller, actuator under disturbances — or any iterated coding-agent loop that opens small reviewable PRs on a schedule, then build it as a repo-local skill, workflow, prompt, and memory file
+disable-model-invocation: true
 ---
 
 # Design Control Loop

@@ -17,7 +17,7 @@ Do lightweight research to locate the relevant code and understand the request. 
 - `codebase-locator` finds related source files, configuration, and tests.
 - `codebase-analyzer` explains current behavior and interactions with file and line references.
 - `codebase-pattern-finder` finds related implementations and conventions.
-- `web-search-researcher` checks external web sources and library documentation when needed.
+- `researcher` checks external web sources and library documentation when needed.
 
 If an Explore agent/tool is available, you can use that too.
 

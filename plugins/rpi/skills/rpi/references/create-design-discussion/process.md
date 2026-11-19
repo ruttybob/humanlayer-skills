@@ -12,7 +12,7 @@ Carry settled choices forward from the user's latest instructions and later desi
 
 ## 2. Fill Research Gaps
 
-When a choice depends on facts that the research has not established, use `codebase-locator`, `codebase-analyzer`, or `codebase-pattern-finder` to investigate. Use `web-search-researcher` for relevant external sources. Wait for the findings and verify the relevant code before presenting options. Fold new facts into the research document when one exists.
+When a choice depends on facts that the research has not established, use `codebase-locator`, `codebase-analyzer`, or `codebase-pattern-finder` to investigate. Use `researcher` for relevant external sources. Wait for the findings and verify the relevant code before presenting options. Fold new facts into the research document when one exists.
 
 ## 3. Read the Templates and Visual Guidance
 

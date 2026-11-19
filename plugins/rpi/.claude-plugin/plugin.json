@@ -13,7 +13,6 @@
     "./agents/codebase-locator.md",
     "./agents/codebase-analyzer.md",
     "./agents/codebase-pattern-finder.md",
-    "./agents/web-search-researcher.md",
     "./agents/outline-implementer-agent.md"
   ],
   "keywords": ["research", "design", "implementation", "skills"]

@@ -21,7 +21,7 @@ Use the appropriate agents for each investigation:
 - `codebase-locator` finds relevant source files, configuration, and tests.
 - `codebase-analyzer` traces behavior, data flow, and component interactions.
 - `codebase-pattern-finder` finds existing examples and conventions.
-- `web-search-researcher` checks external sources when the user requests web research and returns links with its findings.
+- `researcher` checks external sources when the user requests web research and returns links with its findings.
 
 Use an Explore agent when useful. Locate code first where needed, then analyze the relevant implementations. Run independent investigations in parallel. Give each agent a focused, read-only task and ask for paths, line references, testing patterns, and supporting evidence.
 
